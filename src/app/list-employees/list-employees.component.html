@@ -1,0 +1,51 @@
+<div class="container">
+<h2>List Of All Employess</h2>
+<ul class="list-group" *ngFor="let employee of allemp_data; index as ndx">
+  <li class="toggle" class="list-group-item" id="listHead" (click)="toggleDetails(ndx)">{{employee.empName}}</li>
+  <ul id ="toggleview" class="list-group" *ngIf="!(ndx!=detailsdisp) && showDetails">
+        <li *ngIf="ndx != selectedIndex" class="list-group-item">{{employee.empId}}</li>
+        <span *ngIf="ndx == selectedIndex">
+            <input type="text" class="form-control" [(ngModel)]="employee.empId" readonly>
+        </span>
+
+        <li *ngIf="ndx != selectedIndex" class="list-group-item">{{employee.empName}}</li>
+        <span *ngIf="ndx == selectedIndex">
+            <input type="text" class="form-control" [(ngModel)]="employee.empName">
+        </span>
+
+        <li *ngIf="ndx != selectedIndex" class="list-group-item">{{employee.empSalary}}</li>
+        <span *ngIf="ndx == selectedIndex">
+            <input type="text" class="form-control" [(ngModel)]="employee.empSalary">
+        </span>
+
+        <li *ngIf="ndx != selectedIndex" class="list-group-item">{{employee.empDept}}</li>
+        <span *ngIf="ndx == selectedIndex">
+            <input type="text" class="form-control" [(ngModel)]="employee.empDept">
+        </span>
+        
+
+        <li *ngIf="ndx != selectedIndex" class="list-group-item">{{employee.empGmail}}</li>
+        <span *ngIf="ndx == selectedIndex">
+            <input type="text" class="form-control" [(ngModel)]="employee.empGmail">
+        </span>
+  </ul>
+  <div *ngIf="!(ndx!=detailsdisp) && showDetails" align="center" id="divalign">
+      <div class="btn-group" *ngIf="ndx != selectedIndex">
+            <button type="button" (click)="editEmployee(employee, ndx)" class="btn btn-primary">
+                Edit <i class="fa fa-edit"></i>
+            </button>
+            <button  type="button" (click)="deleteEmployee(employee,ndx)" class="btn btn-danger">
+                Delete <i class="fa fa-trash"></i>
+            </button>
+      </div>
+      <div class="btn-group" *ngIf="ndx == selectedIndex" align="center"> 
+            <button  type="button" (click)="updateEmployee(employee,ndx)" class="btn btn-success">
+                Save <i class="fa fa-check-circle"></i>
+            </button>
+            <button  type="button" (click)="cancelEdit()" class="btn btn-secondary">
+                Cancel <i class="fa fa-undo"></i>
+            </button>
+      </div>
+  </div>
+</ul>
+</div>

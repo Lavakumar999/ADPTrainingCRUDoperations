@@ -1,0 +1,8 @@
+{
+    "/rest/*":{
+        "target":"http://localhost:9090/RestApIDemo/",
+        "secure":false,
+        "logLevel":"debug",
+        "changeOrigin":true
+    }
+}
